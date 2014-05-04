@@ -126,3 +126,12 @@ class TableReport(tables.Table):
                                encoding=settings.DEFAULT_CHARSET,
                                title_sheet=self.param_report[:csv_to_xls.MAX_LENGTH_TITLE_SHEET])
         return response
+
+    @property
+    def template(self):
+        return (self._meta.template if self._meta.template is not None
+                else self._template)
+
+    @template.setter
+    def template(self, value):
+        self._template = value
